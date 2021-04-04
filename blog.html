@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<!-- Lab of QiDou from CUHK -->
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Blog</title>
+
+    <link href="./utils/bootstrap.min.css" rel="stylesheet">
+    <script src="./utils/jquery-3.1.1.slim.min.js"></script>
+	
+    <style type="text/css">
+        /* @import url("http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,600,600italic"); */
+        body {
+            /* font-family:"Roboto",Helvetica,Arial,sans-serif; */
+            /* font-family: Arial, Helvetica, sans-serif; */
+            /* font-family: "Times New Roman",Georgia,Serif; */
+            font-family: "Helvetica", Helvetica, sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            font-weight: normal;
+            background-color: #ffffff;
+        }
+
+        .navigation {
+            height: auto;
+            width: 100%;
+            margin-left: 0;
+            background: rgb(20, 68, 106);
+            position: fixed;
+            top: 0;
+        }
+
+        .navigation ul {
+            width: auto;
+            list-style-type: none;
+            white-space: nowrap;
+            margin-left: 22%;
+            padding: 0;
+        }
+
+        .navigation li {
+            float: right;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 2%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #name-nav {
+            float: left;
+            position: relative;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 3px;
+            overflow: hidden;
+            font-size: 120%;
+            text-decoration: none;
+        }
+
+        .navigation li a,
+        .navigation li span {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 3px;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .navigation li a:hover {
+            text-decoration: underline;
+        }
+
+        .navigation li span:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        b {
+            font-weight: 600;
+        }
+
+        .content {
+            width: 100%;
+            padding-top: 4%;
+            /* margin : 0px auto; */
+            background-color: #ffffff;
+        }
+
+        table {
+            padding: 5px;
+        }
+
+        table.pub_table,
+        td.pub_td1,
+        td.pub_td2 {
+            padding: 8px;
+            width: 850px;
+            border-collapse: separate;
+            border-spacing: 15px;
+            margin-top: -5px;
+        }
+
+        td.pub_td1 {
+            width: 50px;
+        }
+
+        td.pub_td1 img {
+            height: 120px;
+            width: 160px;
+        }
+
+        div#container {
+            padding-left: 20px;
+            padding-right: 20px;
+            /*margin-left: 15%;
+            margin-right: 15%; */
+            width: 1000px; 
+            margin: 0 auto;
+            text-align: left;
+            /* position: relative; */
+            background-color: #FFF;
+        }
+
+        div#portrait {
+            /* color: #1367a7;
+        color: rgb(34, 110, 147); */
+            height: 158px;
+        }
+
+        #portrait {
+            /* position: relative; */
+            /*margin-left: 100%;*/
+        }
+
+        h4,
+        h3,
+        h2,
+        h1,
+        .paperlo,
+        .paperhi-only {
+            color: rgb(20, 68, 106);
+        }
+
+        .text_container h2:hover {
+            cursor: pointer;
+        }
+
+        .paperhi-only,
+        .paperlo:hover {
+            cursor: pointer;
+        }
+
+        h2 {
+            font-size: 130%;
+        }
+
+        #paper-show {
+            color: rgb(0, 85, 170);
+            font-size: 80%;
+        }
+
+        #paper-show span:hover {
+            text-decoration: underline;
+        }
+
+        /* p
+	{
+		color: #5B5B5B;
+		margin-bottom: 50px;
+	}
+	p.caption
+	{
+		color: #9B9B9B;
+		text-align: left;
+		width: 600px;
+	}
+	p.caption2
+	{
+		color: #9B9B9B;
+		text-align: left;
+		width: 800px;
+	} */
+
+        #header_img {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+
+        /* 
+        a:link,
+        a:visited {
+            color: #1367a7;
+            text-decoration: none;
+        } */
+
+        #mit_logo {
+            position: absolute;
+            left: 646px;
+            top: 14px;
+            width: 200px;
+            height: 20px;
+        }
+
+        table.pub_table tr {
+            outline: thin dotted #666666;
+        }
+
+        .paper-title {
+            color: black;
+            text-decoration: none;
+        }
+
+        .papericon {
+            /* border-radius: 8px; */
+            /* -moz-box-shadow: 3px 3px 6px #888;
+            -webkit-box-shadow: 3px 3px 6px #888;
+            box-shadow: 3px 3px 6px #888; */
+            /*height: 120px;*/
+            width: 160px;
+            margin-top: auto;
+            margin-left: 5px;
+            margin-bottom: auto;
+        }
+
+        .media {
+            margin-bottom: 15px;
+            margin-left: 10px;
+        }
+
+        .media-body {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+
+        .publication {
+            margin-bottom: 15px;
+        }
+
+        .papers-selected .publication {
+            display: none;
+        }
+
+        .papers-selected .book-chapters {
+            display: none;
+        }
+
+        .papers-selected #show-selected {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .papers-selected .paperhi {
+            display: flex;
+        }
+
+        .papers-selected .paper-year {
+            display: none;
+        }
+
+        .papers-by-date #show-by-date {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .papers-by-date .paper-selected {
+            display: none;
+        }
+
+        .papers-by-date .book-chapters {
+            display: none;
+        }
+
+        .book-chapters #book-chapters {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .book-chapters .paper-selected,
+        .book-chapters .paper-year,
+        .book-chapters .publication {
+            display: none;
+        }
+
+        .book-chapters .chapter {
+            display: flex;
+        }
+
+        /* .papers-by-date .paperhi {
+            display: none;
+        } */
+
+        .hidden>div {
+            display: none;
+        }
+
+        .visible>div {
+            display: block;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('#show-selected').click(function () {
+                $('.papers-container').removeClass('papers-by-date');
+                $('.papers-container').removeClass('book-chapters');
+                $('.papers-container').addClass('papers-selected');
+            });
+
+            $('#show-by-date').click(function () {
+                $('.papers-container').removeClass('papers-selected');
+                $('.papers-container').removeClass('book-chapters');
+                $('.papers-container').addClass('papers-by-date');
+            });
+
+            $('#book-chapters').click(function () {
+                $('.papers-container').removeClass('papers-selected');
+                $('.papers-container').removeClass('papers-by-date');
+                $('.papers-container').addClass('book-chapters');
+            });
+
+            $('.papers-container').addClass('papers-selected');
+
+
+            $('.text_container').addClass("hidden");
+            $('.text_container').click(function () {
+                var $this = $(this);
+
+                if ($this.hasClass("hidden")) {
+                    $(this).removeClass("hidden").addClass("visible");
+
+                } else {
+                    $(this).removeClass("visible").addClass("hidden");
+                }
+            });
+
+            // document.querySelector("#news-nav").onclick = function () {
+            //     document.querySelector("#news").scrollIntoView({
+            //         block: "center",
+            //         behavior: "smooth"
+            //     });
+            // }
+            // publications
+            document.querySelector("#publication-nav").onclick = function () {
+                
+                window.location.href="./index.html#publication-anchor"
+                
+                // document.querySelector(".paperlo").scrollIntoView({
+                //     block: "center",
+                //     behavior: "smooth"
+                // });
+                
+            }
+            // awards
+            document.querySelector("#award-nav").onclick = function () {
+                window.location.href="./index.html#award-anchor"
+                // document.querySelector("#award").scrollIntoView({
+                //     block: "center",
+                //     behavior: "smooth"
+                // });
+            }
+            // talks
+            document.querySelector("#talk-nav").onclick = function () {
+                window.location.href="./index.html#talk-anchor"
+                
+                // document.querySelector("#talk").scrollIntoView({
+                //     block: "center",
+                //     behavior: "smooth"
+                // });
+            }
+            // students
+            document.querySelector("#student-nav").onclick = function () {
+                // document.querySelector("#student").scrollIntoView({
+                //     block: "center",
+                //     behavior: "smooth"
+                // });
+                // window.location.href="./team.html"
+            }
+            // more
+            document.querySelector("#more-nav").onclick = function () {
+                window.location.href="./index.html#more-anchor"
+                // document.querySelector("#more").scrollIntoView({
+                //     block: "center",
+                //     behavior: "smooth"
+                // });
+            }
+
+        });
+    </script>
+
+</head>
+
+
+<body>
+    <div class="navigation">
+        <ul>
+            <li id="name-nav"></li>
+            <!-- <li id="more-nav"><span>More</span></li> -->
+            <!-- <li id="talk-nav"><span>Talks</span><li> -->
+            <!-- <li id="award-nav"><span>Awards</span><li> -->
+			<li><a href="./blog.html">Blog</a><li>
+            <li><a href="./team.html">Team</a><li>
+            <li><a href="./publication.html">Publications</a></li>
+            <li><a href="./index.html">Home</a></li>
+        </ul>
+    </div>
+
+
+    <div class="content">
+        <div id="container">
+			<br>
+		  <h2><a href="./blog/blog1.html">My first blog</a></h2>
+		  <p>Abstract in here.</p>
+		  <p>04/04/2021 | author_name</p>
+			<hr>
+			
+			<h2><a href="./blog/blog2.html">My Second blog</a></h2>
+		  <p>Abstract in here.</p>
+		  <p>04/04/2021 | author_name</p>
+        </div>
+    </div>
+</body>
+
+</html>
